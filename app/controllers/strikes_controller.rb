@@ -1,4 +1,9 @@
 class StrikesController < ApplicationController
-  def create
+  
+  def show
+    @strike = Strike.find(params[:id])
+  end
+  
+  def new
   end
 end
