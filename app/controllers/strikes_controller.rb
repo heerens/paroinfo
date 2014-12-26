@@ -5,5 +5,6 @@ class StrikesController < ApplicationController
   end
   
   def new
+    @strike = Strike.new
   end
 end

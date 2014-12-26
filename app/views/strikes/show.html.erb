@@ -1,1 +1,12 @@
-<%= @strike.city %>, <%= @strike.category %>
+<form class="form-horizontal">
+  
+<% Strike.attribute_names.each do |attribute_name| %>
+  <div class="form-group">
+    <label class="col-sm-2 control-label"><%= attribute_name %>:</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @strike[attribute_name] %></p>
+    </div>
+  </div>
+<% end %>
+
+</form>
