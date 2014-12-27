@@ -6,5 +6,28 @@ class StrikesController < ApplicationController
   
   def new
     @strike = Strike.new
+    Rails.logger.info "hello"
   end
+  
+  def create
+    @strike = Strike.new(strike_params)    # Not the final implementation!
+    Rails.logger.info "Strike should be valid: #{@strike.valid?}"
+    
+    if @strike.save
+      Rails.logger.info "saved new strike" 
+      # Handle a successful save.
+    else
+      Rails.logger.info "NOT saved" 
+      render 'new'
+    end
+  end
+    
+  private
+
+    def strike_params
+      params.require(:strike).permit(:city, :category, :institution, :line, :description, :reporter, :started_at, :expected_duration, :confirmation_count, :approved, :key )
+    end    
+     
+    
+    
 end
