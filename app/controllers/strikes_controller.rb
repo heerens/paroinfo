@@ -1,7 +1,7 @@
 class StrikesController < ApplicationController
   
   def show
-    @strike = Strike.find(params[:id])
+    @strike = Strike.find_by(key: params[:id])
   end
   
   def new
@@ -15,7 +15,7 @@ class StrikesController < ApplicationController
     
     if @strike.save
       Rails.logger.info "saved new strike" 
-      # Handle a successful save.
+      redirect_to @strike
     else
       Rails.logger.info "NOT saved" 
       render 'new'

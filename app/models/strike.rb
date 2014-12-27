@@ -6,9 +6,9 @@ class Strike < ActiveRecord::Base
   before_create :set_key
 
   #changes the url to use privatelink instead of the id
-  #def to_param
-    #privatelink
-  #end
+  def to_param
+    key
+  end
 
   private
 
