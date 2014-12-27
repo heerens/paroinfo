@@ -15,6 +15,7 @@ class StrikesController < ApplicationController
     
     if @strike.save
       Rails.logger.info "saved new strike" 
+      flash[:success] = "New strike added!"
       redirect_to @strike
     else
       Rails.logger.info "NOT saved" 
