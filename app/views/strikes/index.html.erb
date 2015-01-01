@@ -1,0 +1,25 @@
+<% provide(:title, 'All Strikes') %> 
+<h1>All Strikes</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>City</th>
+      <th>Category</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @strikes.each do |strike| %>
+    <tr>
+      <th scope="row"><%= strike.id  %></th>
+      <td><%= strike.city  %></td>
+      <td><%= strike.category  %></td>
+      <td><%= link_to strike.key, strike %></td>
+    </tr>
+    <% end %>
+
+  </tbody>
+</table>
+

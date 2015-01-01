@@ -4,6 +4,10 @@ class StrikesController < ApplicationController
     @strike = Strike.find_by(key: params[:id])
   end
   
+  def index
+    @strikes = Strike.all
+  end
+  
   def new
     @strike = Strike.new
     Rails.logger.info "hello"
