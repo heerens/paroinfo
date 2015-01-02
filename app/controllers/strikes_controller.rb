@@ -1,4 +1,5 @@
 class StrikesController < ApplicationController
+  http_basic_authenticate_with :name => "alex", :password => "alex"
   
   def show
     @strike = Strike.find_by(key: params[:id])
