@@ -1,13 +1,15 @@
 <% provide(:title, 'All Strikes') %> 
 <h1>All Strikes</h1>
 
+<%= will_paginate %>
+
 <table class="table table-bordered">
   <thead>
     <tr>
       <th>#</th>
       <th>City</th>
       <th>Category</th>
-      <th>Edit</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -16,10 +18,16 @@
       <th scope="row"><%= strike.id  %></th>
       <td><%= strike.city  %></td>
       <td><%= strike.category  %></td>
-      <td><%= link_to strike.key, strike %></td>
+      <td>
+        <%= link_to "edit", edit_strike_path(strike) %> | 
+        <%= link_to "delete", strike, method: :delete, data: { confirm: "You sure?" } %>
+      </td>
     </tr>
     <% end %>
 
   </tbody>
 </table>
 
+<%= will_paginate %>
+
+      

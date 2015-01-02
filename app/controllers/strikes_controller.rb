@@ -5,12 +5,22 @@ class StrikesController < ApplicationController
   end
   
   def index
-    @strikes = Strike.all
+    @strikes = Strike.paginate(page: params[:page], per_page: 10)
   end
   
   def new
     @strike = Strike.new
     Rails.logger.info "hello"
+  end
+  
+  def destroy
+    Strike.find_by(key: params[:id]).destroy
+    flash[:success] = "Strike deleted"
+    redirect_to strikes_url
+  end
+  
+  def edit
+     @strike = Strike.find_by(key: params[:id])
   end
   
   def create
@@ -27,6 +37,17 @@ class StrikesController < ApplicationController
     end
   end
     
+    
+  def update
+    @strike = Strike.find_by(key: params[:id])
+    if @strike.update_attributes(strike_params)
+      flash[:success] = "Strike updated!"
+       redirect_to strikes_url
+    else
+      render 'edit'
+    end
+  end
+      
   private
 
     def strike_params

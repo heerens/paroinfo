@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'create' => 'strikes#new'
-  resources :strikes
-
+  scope '/admin' do
+    get 'create' => 'strikes#new'
+    resources :strikes
+    get '/' , to: redirect('/admin/strikes')
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
